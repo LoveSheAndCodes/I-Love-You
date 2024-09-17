@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png">
+    <title>Duvidas Amorosas...</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Primeira Tela: Dica -->
+        <div id="introDica">
+            <h1 class="title">Quem sou eu? 💻</h1>
+            <p class="hint">Dica: Entendedor de tecnologia, sei programar e amo jogar Valorant 😉</p>
+            
+            
+                
+            <button onclick="showMainIntro()">Começar a responder 💖</button>
+        </div>
+
+        <!-- Segunda Tela: Introdução Principal -->
+        <div id="introQuiz" style="display:none;">
+            <p class="intro-text">Eu queria te fazer algumas perguntas porque, bem, me sinto melhor quando estou perto de você. 😳</p>
+            <button onclick="startQuiz()">Vamos começar? 💖</button>
+        </div>
+
+        <!-- Container para as perguntas -->
+        <div id="questionContainer" style="display:none;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

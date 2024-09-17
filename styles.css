@@ -1,0 +1,182 @@
+/* Reset de estilo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(to bottom right, #ffe4e1, #ffb6c1); /* Gradiente de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px; /* Adicionando padding para dispositivos pequenos */
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px; /* Aumentando o padding */
+    border-radius: 25px; /* Bordas mais arredondadas */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Sombra mais forte */
+    width: 90%; /* Ajustando a largura para dispositivos menores */
+    max-width: 400px;
+    animation: fadeIn 1s ease-in-out; /* Animação ao aparecer */
+}
+
+.title {
+    color: #ff69b4;
+    font-size: 2.8rem; /* Aumentando o tamanho da fonte */
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(255, 20, 147, 0.5); /* Sombra no texto */
+}
+
+.hint {
+    font-size: 1.5rem; /* Aumentando o tamanho da fonte */
+    margin-bottom: 25px;
+    color: #ff1493; /* Mudando a cor para combinar com o tema */
+}
+
+.intro-text {
+    font-size: 2.3rem; /* Aumentando o tamanho da fonte */
+    color: #ff1493;
+    margin-bottom: 25px;
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Ajustando padding */
+    margin-top: 10px;
+    border-radius: 15px; /* Bordas mais arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Adicionando transição de transformação */
+}
+
+button:hover {
+    background-color: #ff1493;
+    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+}
+
+.question {
+    font-size: 1.8rem; /* Aumentando o tamanho da fonte */
+    color: #ff1493;
+    margin-bottom: 25px;
+}
+
+button.number-button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    width: 50px; /* Aumentando o tamanho do botão */
+    height: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Efeito de transformação ao passar o mouse */
+}
+
+button.number-button:hover {
+    transform: scale(1.1); /* Efeito de aumento ao passar o mouse */
+}
+
+button.number-button.selected {
+    background-color: #ff1493;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 12px; /* Aumentando o padding */
+    margin-top: 20px;
+    border: 2px solid #ff69b4;
+    border-radius: 15px; /* Bordas mais arredondadas */
+    transition: border-color 0.3s; /* Transição suave para a borda */
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: #ff1493; /* Mudança de cor ao focar */
+    outline: none; /* Remove o contorno padrão */
+}
+
+/* Estilo do contêiner da opção para alinhar o quadrado colorido e a bolinha de rádio */
+.option-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Espaço entre as opções */
+    margin-left: 7.6rem; /* Desloca o contêiner 2vw para a direita */
+}
+
+/* Estilo do quadrado colorido */
+.color-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #ff69b4; /* Cor padrão rosa */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Necessário para o posicionamento do botão de rádio */
+    margin-right: 10px; /* Espaço entre o quadrado colorido e o texto */
+}
+
+/* Estilo da bolinha de rádio dentro do quadrado colorido */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    cursor: pointer;
+    position: absolute; /* Posiciona o botão de rádio dentro do quadrado */
+    top: 50%; /* Alinha verticalmente no meio do quadrado */
+    left: 50%; /* Alinha horizontalmente no meio do quadrado */
+    transform: translate(-50%, -50%); /* Centraliza o botão de rádio dentro do quadrado */
+}
+
+/* Estilo para a bolinha de rádio selecionada quando o quadrado é rosa */
+.color-option[data-color="rosa"] input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #800080; /* Cor roxa quando o quadrado é rosa */
+}
+
+/* Estilo para a bolinha de rádio selecionada quando o quadrado é roxo */
+.color-option[data-color="roxo"] input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #ff69b4; /* Cor rosa quando o quadrado é roxo */
+}
+
+/* Estilo do texto ao lado da bolinha de rádio */
+.radio-label {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
