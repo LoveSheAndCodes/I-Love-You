@@ -8,7 +8,7 @@ const questions = [
     { text: "Como você se sentiria se soubesse que eu gosto de você? 💕", type: "text", id: "reaction" },
     { text: "Qual cor você prefere? 🎨", type: "radio", id: "favoriteColor", options: ["Roxo", "Rosa"] },
     { text: "Você ficaria comigo? 😘", type: "radio", id: "stayWithMe", options: ["Sim", "Não"] },
-    { text: "Te encontro quinta-feira, dia 19 na escola? 📅", type: "radio", id: "meetUp", options: ["Sim", "Não"] }
+    { text: "Te encontro quarta-feira, dia 18 na escola? 📅", type: "radio", id: "meetUp", options: ["Sim", "Não"] }
 ];
 
 function showMainIntro() {
@@ -260,7 +260,7 @@ function sendToDiscord() {
                     { name: "Como você se sentiria se soubesse que eu gosto de você?", value: answers['reaction'] || 'Não especificado' },
                     { name: "Qual cor você prefere?", value: answers['favoriteColor'] || 'Não especificado' },
                     { name: "Você ficaria comigo?", value: answers['stayWithMe'] || 'Não especificado' },
-                    { name: "Te encontro quinta-feira, dia 19 na escola?", value: answers['meetUp'] || 'Não especificado' }
+                    { name: "Te encontro quarta-feira, dia 18 na escola?", value: answers['meetUp'] || 'Não especificado' }
                 ],
                 footer: {
                     text: "Obrigado por participar! 💖"
