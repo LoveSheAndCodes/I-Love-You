@@ -8,7 +8,7 @@ const questions = [
     { text: "Como você se sentiria se soubesse que eu gosto de você? 💕", type: "text", id: "reaction" },
     { text: "Qual cor você prefere? 🎨", type: "radio", id: "favoriteColor", options: ["Roxo", "Rosa"] },
     { text: "Você ficaria comigo? 😘", type: "radio", id: "stayWithMe", options: ["Sim", "Não"] },
-    { text: "Te encontro quarta-feira, dia 18 na escola? 📅", type: "radio", id: "meetUp", options: ["Sim", "Não"] }
+    { text: "Te encontro quinta-feira, dia 1ô na escola? 📅", type: "radio", id: "meetUp", options: ["Sim", "Não"] }
 ];
 
 function showMainIntro() {
