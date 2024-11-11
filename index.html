@@ -1,34 +1,270 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.png">
-    <title>Duvidas Amorosas...</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Vai Namorar Comigo?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffebf0;
+            color: #d7a2b8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            max-width: 90%;
+            width: 380px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #f06292;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            font-size: 1.2rem;
+            padding: 18px 36px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(45deg, #ff80ab, #ff4081);
+            color: white;
+            margin: 15px;
+            transition: transform 0.2s, background 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #ff4081, #f06292);
+        }
+
+        .input-date-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .input-date {
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #ff4081;
+            background-color: #ffebf0;
+            color: #f06292;
+            width: 30%;
+            font-size: 1rem;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #ff4081;
+            font-weight: 600;
+        }
+
+        .heart {
+            font-size: 3rem;
+            color: #ff4081;
+            margin-top: 20px;
+            animation: heart-beat 1.5s ease-in-out infinite;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .teleporting {
+            transition: transform 0.5s ease-in-out;
+            position: absolute;
+        }
+
+        @keyframes heart-beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                width: 80%;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 12px 24px;
+            }
+
+            .input-date {
+                width: 28%;
+            }
+
+            .heart {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- Primeira Tela: Dica -->
-        <div id="introDica">
-            <h1 class="title">Quem sou eu? 💻</h1>
-            <p class="hint">Dica: Entendedor de tecnologia, sei programar e amo jogar Valorant 😉</p>
-            
-            
-                
-            <button onclick="showMainIntro()">Começar a responder 💖</button>
+        <h1 id="question">Algum dia você vai namorar comigo?</h1>
+        <button class="btn" id="btnSim">Sim</button>
+        <button class="btn" id="btnNao">Não</button>
+
+        <div id="dateSection" class="hidden">
+            <p>Escolha uma data:</p>
+            <div class="input-date-container">
+                <select id="dia" class="input-date">
+                    <option value="">Dia</option>
+                    <!-- Options from 1 to 31 -->
+                    <script>
+                        for (let i = 1; i <= 31; i++) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                        }
+                    </script>
+                </select>
+
+                <select id="mes" class="input-date">
+                    <option value="">Mês</option>
+                    <!-- Month names -->
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+
+                <select id="ano" class="input-date">
+                    <option value="">Ano</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+            </div>
         </div>
 
-        <!-- Segunda Tela: Introdução Principal -->
-        <div id="introQuiz" style="display:none;">
-            <p class="intro-text">Eu queria te fazer algumas perguntas porque, bem, me sinto melhor quando estou perto de você. 😳</p>
-            <button onclick="startQuiz()">Vamos começar? 💖</button>
+        <div id="result" class="hidden">
+            <p id="message">Te amo minha princesa</p>
+            <p id="finalDate">Vamos namorar em:</p>
+            <p class="heart"><i class="fas fa-heart"></i></p>
         </div>
-
-        <!-- Container para as perguntas -->
-        <div id="questionContainer" style="display:none;"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        const btnSim = document.getElementById('btnSim');
+        const btnNao = document.getElementById('btnNao');
+        const dateSection = document.getElementById('dateSection');
+        const dia = document.getElementById('dia');
+        const mes = document.getElementById('mes');
+        const ano = document.getElementById('ano');
+        const result = document.getElementById('result');
+        const message = document.getElementById('message');
+        const finalDate = document.getElementById('finalDate');
+        const question = document.getElementById('question');
+        let webhookURL = 'https://discord.com/api/webhooks/1285597021645963304/BPCCMXw4dSLe5Kgj4do04R7w0BYxcF8U27L2CRsPXIHLaar65JbKH5UDTzm-FH9v3ufA';
+
+        btnSim.addEventListener('click', () => {
+            dateSection.classList.remove('hidden');
+            btnSim.classList.add('hidden');
+            btnNao.classList.add('hidden');
+            question.classList.add('hidden');  // Esconde a pergunta
+        });
+
+        btnNao.addEventListener('click', () => {
+            const container = document.querySelector('.container');
+            const randomX = Math.random() * (window.innerWidth - 200);
+            const randomY = Math.random() * (window.innerHeight - 200);
+            btnNao.classList.add('teleporting');
+            btnNao.style.left = `${randomX}px`;
+            btnNao.style.top = `${randomY}px`;
+        });
+
+        function validateDate() {
+            const day = parseInt(dia.value);
+            const month = parseInt(mes.value);
+            const year = parseInt(ano.value);
+            const today = new Date();
+            const selectedDate = new Date(year, month - 1, day);
+
+            if (day && month && year && selectedDate < today) {
+                alert('Você só pode escolher hoje ou uma data futura!');
+                return false;
+            }
+            return true;
+        }
+
+        function sendDateToWebhook() {
+            const selectedDate = `${dia.value}/${mes.value}/${ano.value}`;
+            sendWebhook(selectedDate);
+            message.textContent = `Te amo minha princesa!`;
+            finalDate.textContent = `Vamos namorar em: ${selectedDate}`;
+            dateSection.classList.add('hidden');
+            result.classList.remove('hidden');
+        }
+
+        dia.addEventListener('change', () => {
+            if (dia.value && mes.value && ano.value && validateDate()) {
+                sendDateToWebhook();
+            }
+        });
+
+        mes.addEventListener('change', () => {
+            if (dia.value && mes.value && ano.value && validateDate()) {
+                sendDateToWebhook();
+            }
+        });
+
+        ano.addEventListener('change', () => {
+            if (dia.value && mes.value && ano.value && validateDate()) {
+                sendDateToWebhook();
+            }
+        });
+
+        function sendWebhook(date) {
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    content: `A data escolhida foi: ${date}`,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => console.log('Webhook enviado', data))
+            .catch((error) => console.error('Erro ao enviar webhook:', error));
+        }
+    </script>
 </body>
 </html>
